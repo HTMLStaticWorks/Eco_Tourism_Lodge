@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Escape | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .booking-stepper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .booking-stepper::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--glass-border);
+            z-index: 1;
+        }
+        .step {
+            z-index: 2;
+            background: var(--secondary);
+            padding: 0 20px;
+            text-align: center;
+        }
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .step.active .step-num {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        .step-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        .step.active .step-label { color: var(--accent); }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .booking-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .booking-section.active {
+            display: block;
+        }
+
+        .calendar-mock {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .calendar-day {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .calendar-day:hover, .calendar-day.selected {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+
+        .room-select {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .room-option {
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .room-option:hover, .room-option.selected {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        .room-option img { height: 150px; width: 100%; object-fit: cover; }
+        .room-content { padding: 20px; }
+
+        .upsell-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: var(--glass);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <a href="index.html" class="text-accent uppercase" style="font-size: 12px;">Back to Journal</a>
+        </div>
+    </nav>
+
+    <div class="section-padding" style="margin-top: 50px;">
+        <div class="container booking-container">
+            
+            <!-- Stepper -->
+            <div class="booking-stepper">
+                <div class="step active" data-step="1">
+                    <div class="step-num">1</div>
+                    <div class="step-label">Dates</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-num">2</div>
+                    <div class="step-label">Stay</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-num">3</div>
+                    <div class="step-label">Guests</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-num">4</div>
+                    <div class="step-label">Enhance</div>
+                </div>
+                <div class="step" data-step="5">
+                    <div class="step-num">5</div>
+                    <div class="step-label">Confirm</div>
+                </div>
+            </div>
+
+            <form id="booking-form">
+                
+                <!-- Step 1: Dates -->
+                <div class="booking-section active" id="section-1">
+                    <h2 class="serif" style="font-size: 32px; margin-bottom: 10px;">Select Your Journey Dates</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">Choose your arrival and departure dates to check availability.</p>
+                    
+                    <div class="glass" style="padding: 30px;">
+                        <h4 class="uppercase" style="margin-bottom: 15px; font-size: 12px; opacity: 0.6;">April 2026</h4>
+                        <div class="calendar-mock">
+                            <!-- Simple mock calendar -->
+                            <div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day selected">10</div><div class="calendar-day selected">11</div><div class="calendar-day selected">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Accommodation -->
+                <div class="booking-section" id="section-2">
+                    <h2 class="serif" style="font-size: 32px; margin-bottom: 10px;">Choose Your Sanctuary</h2>
+                    <div class="room-select">
+                        <div class="room-option active selected">
+                            <img src="assets/images/room-detail.png" alt="Canopy Suite">
+                            <div class="room-content">
+                                <h4 class="serif">Celestial Canopy Suite</h4>
+                                <p style="font-size: 12px; color: var(--text-muted); margin: 5px 0 10px;">Suspended Luxury</p>
+                                <span class="text-accent">$850/night</span>
+                            </div>
+                        </div>
+                        <div class="room-option">
+                            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80" alt="Eco Cabin">
+                            <div class="room-content">
+                                <h4 class="serif">Mistwood Eco-Cabin</h4>
+                                <p style="font-size: 12px; color: var(--text-muted); margin: 5px 0 10px;">Grounded Serenity</p>
+                                <span class="text-accent">$550/night</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Guests -->
+                <div class="booking-section" id="section-3">
+                    <h2 class="serif" style="font-size: 32px; margin-bottom: 30px;">How many travelers?</h2>
+                    <div class="glass" style="padding: 40px; display: flex; gap: 40px; justify-content: center;">
+                        <div style="text-align: center;">
+                            <label class="uppercase" style="display: block; margin-bottom: 10px; font-size: 12px;">Adults</label>
+                            <input type="number" value="2" style="background: var(--glass); border: 1px solid var(--accent); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
+                        </div>
+                        <div style="text-align: center;">
+                            <label class="uppercase" style="display: block; margin-bottom: 10px; font-size: 12px;">Children</label>
+                            <input type="number" value="0" style="background: var(--glass); border: 1px solid var(--glass-border); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Upsells -->
+                <div class="booking-section" id="section-4">
+                    <h2 class="serif" style="font-size: 32px; margin-bottom: 10px;">Enhance Your Stay</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">Add curated experiences to your itinerary.</p>
+                    
+                    <div class="upsell-item">
+                        <div>
+                            <h4 class="serif">The Emerald Trek</h4>
+                            <p style="font-size: 12px; color: var(--text-muted);">Guided jungle expedition</p>
+                        </div>
+                        <div class="flex align-center">
+                            <span class="text-accent" style="margin-right: 20px;">+$150/person</span>
+                            <button type="button" class="btn btn-outline" style="font-size: 10px; padding: 8px 15px;">Add</button>
+                        </div>
+                    </div>
+                    <div class="upsell-item">
+                        <div>
+                            <h4 class="serif">Night Safari</h4>
+                            <p style="font-size: 12px; color: var(--text-muted);">Nocturnal wildlife encounter</p>
+                        </div>
+                        <div class="flex align-center">
+                            <span class="text-accent" style="margin-right: 20px;">+$120/person</span>
+                            <button type="button" class="btn btn-outline" style="font-size: 10px; padding: 8px 15px;">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Summary -->
+                <div class="booking-section" id="section-5">
+                    <h2 class="serif" style="font-size: 32px; margin-bottom: 30px;">Booking Summary</h2>
+                    <div class="glass" style="padding: 40px;">
+                        <div class="flex justify-between" style="margin-bottom: 15px;">
+                            <span>Celestial Canopy Suite (2 Nights)</span>
+                            <span class="text-accent">$1,700</span>
+                        </div>
+                        <div class="flex justify-between" style="margin-bottom: 15px;">
+                            <span>Emerald Trek (2 Adults)</span>
+                            <span class="text-accent">$300</span>
+                        </div>
+                        <div class="flex justify-between" style="margin-top: 30px; border-top: 1px solid var(--glass-border); padding-top: 20px; font-weight: 600; font-size: 20px;">
+                            <span>Total Amount</span>
+                            <span class="text-accent">$2,000</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 20px;">* Includes all taxes and conservation fees.</p>
+                    </div>
+                </div>
+
+                <!-- Nav Buttons -->
+                <div class="flex justify-between" style="margin-top: 50px;">
+                    <button type="button" id="prev-btn" class="btn btn-outline" style="visibility: hidden;">Back</button>
+                    <button type="button" id="next-btn" class="btn btn-primary">Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/booking.js"></script>
+</body>
+</html>

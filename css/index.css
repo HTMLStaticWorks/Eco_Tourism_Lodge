@@ -1,0 +1,195 @@
+/* 
+    Eco-Tourism Lodge Design System (Strict 3-Color Palette)
+    Primary: Deep Forest Green (#0B3D2E)
+    Secondary: Charcoal (#1A1A1A)
+    Accent: Soft Gold (#C5A059)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary: #0B3D2E;
+    --secondary: #1A1A1A;
+    --accent: #C5A059;
+    --white: #FFFFFF;
+    --black: #000000;
+    
+    /* Semantic Colors */
+    --bg-dark: var(--secondary);
+    --text-main: var(--white);
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Layout */
+    --header-height: 80px;
+    --container-width: 1200px;
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Glassmorphism */
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-accent { color: var(--accent); }
+.bg-primary { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+
+.flex { display: flex; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+.section-padding { padding: 100px 0; }
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent);
+    color: var(--secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Performance: Lazy Loading Placeholder */
+img[loading="lazy"] {
+    background: var(--glass);
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .flex {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-between {
+    justify-content: space-between;
+}
+
+[dir="rtl"] .nav-links {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+[dir="rtl"] .btn {
+    letter-spacing: 0;
+}
+
+[dir="rtl"] .stay-card.reverse,
+[dir="rtl"] .eco-item.reverse {
+    flex-direction: row;
+}
+
+[dir="rtl"] .timeline {
+    border-left: none;
+    border-right: 2px solid var(--accent);
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+[dir="rtl"] .timeline-item::after {
+    left: auto;
+    right: -41px;
+}
+
+/* Global Smooth Scroll and Reveal */
+[data-scroll] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-scroll].reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+

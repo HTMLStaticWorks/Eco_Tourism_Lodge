@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Detail | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="experiences.html" class="text-accent">Experiences</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="detail-hero" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1600&q=80');">
+        <div class="detail-overlay"></div>
+        <div class="container">
+            <h4 class="text-accent uppercase">Curated Adventure</h4>
+            <h1 class="serif" style="font-size: 72px;">The Emerald Trek</h1>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container flex" style="gap: 80px;">
+            <div style="flex: 1.5;">
+                <h2 class="serif" style="font-size: 42px; margin-bottom: 30px;">Journey into the Heart</h2>
+                <p style="font-size: 18px; line-height: 1.8; color: var(--text-muted); margin-bottom: 30px;">
+                    Led by our Chief Naturalist, the Emerald Trek is more than a walk; it's a deep-dive into the complex biology and spiritual significance of the Amazon. You will traverse a 5km trail specifically curated to showcase the transition between primary and secondary forest.
+                </p>
+                <p style="font-size: 18px; line-height: 1.8; color: var(--text-muted); margin-bottom: 40px;">
+                    Highlights include visiting a 'Mother Tree'—a 400-year-old Kapok standing 60 meters tall—and discovering clandestine waterfalls where the water is so pure it's drinkable. Expect to see vibrant macaws, playful spider monkeys, and perhaps the elusive giant otter.
+                </p>
+                
+                <h3 class="serif" style="font-size: 32px; margin-bottom: 25px;">Itinerary Overview</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="text-accent">08:00 AM</h4>
+                        <p>Departure from the main lodge. Introduction to rainforest safety and biodiversity.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-accent">10:30 AM</h4>
+                        <p>Arrival at the Silver Falls. Refreshments and botanical photography session.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-accent">01:00 PM</h4>
+                        <p>Traditional wood-fired lunch served in a forest clearing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="glass" style="padding: 40px; border-radius: var(--radius); position: sticky; top: 120px;">
+                    <h3 class="serif" style="font-size: 28px; margin-bottom: 10px;">The Experience</h3>
+                    <p style="color: var(--accent); font-size: 24px; font-weight: 600; margin-bottom: 25px;">$150 / PERSON</p>
+                    
+                    <ul style="margin-bottom: 35px; font-size: 14px; border-top: 1px solid var(--glass-border); padding-top: 25px;">
+                        <li style="margin-bottom: 15px;">• Duration: 6 Hours</li>
+                        <li style="margin-bottom: 15px;">• Difficulty: Moderate</li>
+                        <li style="margin-bottom: 15px;">• Group Size: Max 6</li>
+                        <li style="margin-bottom: 15px;">• Inclusions: Gear & Lunch</li>
+                    </ul>
+
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Booking</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .timeline {
+            border-left: 2px solid var(--accent);
+            padding-left: 30px;
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 992px) {
+            .flex { flex-direction: column; }
+            .glass { position: static !important; margin-top: 40px; }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Canopy Journal | Sylvan Retreat Blog</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .blog-card { border-radius: var(--radius); overflow: hidden; }
+        .blog-img { height: 300px; background-size: cover; background-position: center; transition: 0.5s; }
+        .blog-card:hover .blog-img { transform: scale(1.05); }
+        .blog-content { padding: 40px; }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="blog.html" class="text-accent">Journal</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&q=80'); height: 60vh; display: flex; align-items: center; text-align: center;">
+        <div class="container">
+            <h1 class="serif" style="font-size: 64px;">The Canopy Journal</h1>
+            <p style="font-size: 20px; color: var(--text-muted); max-width: 600px; margin: 20px auto 0;">Stories of conservation, adventure, and the soul of the Amazon.</p>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container blog-grid">
+            <div class="blog-card glass">
+                <a href="blog-detail.html">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="blog-content">
+                        <h4 class="text-accent uppercase" style="font-size: 12px; margin-bottom: 10px;">Conservation</h4>
+                        <h2 class="serif" style="font-size: 32px; margin-bottom: 15px;">The Jaguar Corridor: Protecting the Apex</h2>
+                        <p style="color: var(--text-muted);">How Sylvan Retreat is working with local NGOs to establish a protected transit route for the Amazon's most iconic predator.</p>
+                        <span style="display: inline-block; margin-top: 20px; color: var(--accent); border-bottom: 1px solid var(--accent);">Read Story</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="blog-card glass">
+                <a href="blog-detail.html">
+                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1544004015-621404172424?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="blog-content">
+                        <h4 class="text-accent uppercase" style="font-size: 12px; margin-bottom: 10px;">Adventure</h4>
+                        <h2 class="serif" style="font-size: 32px; margin-bottom: 15px;">5 Hidden Waterfalls You Must Trek</h2>
+                        <p style="color: var(--text-muted);">A guide to the most pristine water features hidden deep within our private reserve, accessible only to our guests.</p>
+                        <span style="display: inline-block; margin-top: 20px; color: var(--accent); border-bottom: 1px solid var(--accent);">Read Story</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

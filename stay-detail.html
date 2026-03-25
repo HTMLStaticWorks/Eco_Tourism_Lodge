@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Canopy Suite | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="detail-hero" style="background-image: url('assets/images/room-detail.png');">
+        <div class="detail-overlay"></div>
+        <div class="container">
+            <h4 class="text-accent uppercase">Treehouse Luxury</h4>
+            <h1 class="serif" style="font-size: 72px;">Celestial Canopy Suite</h1>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container flex" style="gap: 80px;">
+            <div style="flex: 1.5;">
+                <h2 class="serif" style="font-size: 42px; margin-bottom: 30px;">Suspended in the Wild</h2>
+                <p style="font-size: 18px; line-height: 1.8; color: var(--text-muted); margin-bottom: 30px;">
+                    Experience the ultimate rainforest immersion in our signature Celestial Canopy Suite. Perched 30 meters above the forest floor, this architectural marvel offers a dual perspective: the vibrant life of the mid-canopy and the infinite horizon of the jungle roof.
+                </p>
+                <p style="font-size: 18px; line-height: 1.8; color: var(--text-muted); margin-bottom: 40px;">
+                    Handcrafted from sustainable materials and featuring state-of-the-art glassmorphism design, the suite dissolves the barrier between you and the wild. Wake up to the mist rolling over the trees and fall asleep to the celestial display through your private skylight.
+                </p>
+                
+                <h3 class="serif" style="font-size: 32px; margin-bottom: 20px;">Key Features</h3>
+                <div class="grid-3" style="grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div class="feature-item glass">
+                        <h4 class="text-accent">Infinity Plunge Pool</h4>
+                        <p style="font-size: 14px;">Private heated pool overlooking the canopy valley.</p>
+                    </div>
+                    <div class="feature-item glass">
+                        <h4 class="text-accent">Botanical Spa Bath</h4>
+                        <h4 class="text-accent">Open-Air Deck</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="sticky-sidebar glass" style="padding: 40px; border-radius: var(--radius); position: sticky; top: 120px;">
+                    <h3 class="serif" style="font-size: 28px; margin-bottom: 10px;">The Details</h3>
+                    <p style="color: var(--accent); font-size: 24px; font-weight: 600; margin-bottom: 25px;">$850 / NIGHT</p>
+                    
+                    <ul style="margin-bottom: 30px; font-size: 14px; border-top: 1px solid var(--glass-border); padding-top: 20px;">
+                        <li style="margin-bottom: 15px;">• Max Occupancy: 2 Adults</li>
+                        <li style="margin-bottom: 15px;">• Size: 1,200 sq. ft.</li>
+                        <li style="margin-bottom: 15px;">• Bedding: Heritage King</li>
+                        <li style="margin-bottom: 15px;">• Views: Misty Valley & Canopy</li>
+                    </ul>
+
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">Check Availability</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .detail-hero {
+            height: 75vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .detail-overlay {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        }
+
+        .detail-hero .container { z-index: 2; }
+
+        .feature-item { padding: 25px; border-radius: 8px; }
+        .feature-item h4 { margin-bottom: 10px; }
+
+        @media (max-width: 992px) {
+            .flex { flex-direction: column; }
+            .sticky-sidebar { position: static; margin-top: 40px; }
+        }
+    </style>
+</body>
+</html>

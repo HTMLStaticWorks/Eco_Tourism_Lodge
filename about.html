@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <!-- Simple Nav -->
+    <nav class="glass-dark" style="position: absolute;">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="about.html" class="text-accent">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');">
+        <div class="container">
+            <h1 class="serif" style="font-size: 64px;">Born from the Forest</h1>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container flex align-center" style="gap: 80px;">
+            <div style="flex: 1;">
+                <h4 class="text-accent uppercase">The Vision</h4>
+                <h2 class="serif" style="font-size: 48px; margin: 20px 0;">A Legacy of Conservation</h2>
+                <p style="font-size: 18px; margin-bottom: 20px;">Sylvan Retreat was founded in 2012 with a single mission: to prove that luxury hospitality and rainforest conservation can coexist. What started as three small cabins has grown into a world-renowned sanctuary.</p>
+                <p style="color: var(--text-muted);">We believe that the best way to protect our wild spaces is to invite people into them—to let them see, breathe, and hear the heartbeat of the forest.</p>
+            </div>
+            <div style="flex: 1;">
+                <div class="glass" style="padding: 10px; border-radius: var(--radius);">
+                    <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80" alt="Lodge Background" style="border-radius: var(--radius);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: #082d22;">
+        <div class="container text-center">
+            <h2 class="serif" style="font-size: 42px; margin-bottom: 60px;">Our Core Values</h2>
+            <div class="grid-3">
+                <div class="value-card">
+                    <h3 class="text-accent">Sustainability</h3>
+                    <p>100% solar powered, zero single-use plastics, and a closed-loop water system.</p>
+                </div>
+                <div class="value-card">
+                    <h3 class="text-accent">Community</h3>
+                    <p>90% of our staff are from the local village, and we support local education programs.</p>
+                </div>
+                <div class="value-card">
+                    <h3 class="text-accent">Immersion</h3>
+                    <p>Every detail of our design is intended to dissolve the barrier between you and nature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-padding">
+        <!-- Reusable Footer content -->
+    </footer>
+
+    <style>
+        .page-header {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .value-card {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+        }
+
+        .value-card h3 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stay | Sylvan Retreat Accommodation</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html" class="text-accent">Stay</a></li>
+                <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-padding" style="margin-top: 50px;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <h4 class="text-accent uppercase">Sanctuaries</h4>
+                <h1 class="serif" style="font-size: 64px;">Living Among the Canopy</h1>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">Each suite is a masterclass in eco-luxury, designed to dissolve the boundary between guest and forest.</p>
+            </div>
+
+            <div class="stay-listing">
+                <div class="stay-card flex">
+                    <div class="stay-img" style="background-image: url('assets/images/hero-main.png');"></div>
+                    <div class="stay-info glass">
+                        <h4 class="text-accent">Starting at $850/night</h4>
+                        <h2 class="serif">Celestial Canopy Suite</h2>
+                        <p>Our flagship treehouse. Suspended 30 meters above the forest floor, featuring a private infinity plunge pool and 360-degree glass walls.</p>
+                        <ul class="amenities flex">
+                            <li>King Bed</li>
+                            <li>Private Pool</li>
+                            <li>Skylight</li>
+                            <li>Butler Service</li>
+                        </ul>
+                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                            <a href="stay-detail.html" class="btn btn-outline">Explore Suite</a>
+                            <a href="booking.html" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stay-card flex reverse">
+                    <div class="stay-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="stay-info glass">
+                        <h4 class="text-accent">Starting at $550/night</h4>
+                        <h2 class="serif">Mistwood Eco-Cabin</h2>
+                        <p>Nestled on the forest floor, these cabins offer a grounded intimacy with the rainforest. Features large stone baths and private garden showers.</p>
+                        <ul class="amenities flex">
+                            <li>Queen Bed</li>
+                            <li>Garden Shower</li>
+                            <li>Stone Bath</li>
+                            <li>Solar Powered</li>
+                        </ul>
+                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                            <a href="stay-detail.html" class="btn btn-outline">Explore Cabin</a>
+                            <a href="booking.html" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stay-card flex">
+                    <div class="stay-img" style="background-image: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="stay-info glass">
+                        <h4 class="text-accent">Starting at $1,200/night</h4>
+                        <h2 class="serif">The Rainforest Villa</h2>
+                        <p>The pinnacle of luxury. A multi-level sanctuary with private observation decks, organic wine cellar, and dedicated naturalist guide.</p>
+                        <ul class="amenities flex">
+                            <li>2 Bedrooms</li>
+                            <li>Private Guide</li>
+                            <li>Observation Deck</li>
+                            <li>Wine Cellar</li>
+                        </ul>
+                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                            <a href="stay-detail.html" class="btn btn-outline">Explore Villa</a>
+                            <a href="booking.html" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .stay-listing {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .stay-card {
+            min-height: 500px;
+            gap: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .stay-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .stay-img {
+            flex: 1.5;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .stay-info {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+            border-radius: 0;
+        }
+
+        .stay-info h2 { font-size: 42px; margin: 10px 0 20px; }
+        .stay-info p { color: var(--text-muted); font-size: 18px; margin-bottom: 30px; }
+
+        .amenities {
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .amenities li {
+            padding: 5px 12px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .stay-card, .stay-card.reverse { flex-direction: column; }
+            .stay-img { min-height: 350px; }
+            .stay-info { padding: 40px; }
+        }
+    </style>
+</body>
+</html>

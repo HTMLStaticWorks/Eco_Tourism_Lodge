@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Sylvan Retreat Storytelling</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="storytelling">
+
+    <!-- Minimal Nav -->
+    <nav class="glass">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;">SYLVAN</div>
+            <a href="index.html" class="uppercase" style="letter-spacing: 2px; font-size: 12px; border-bottom: 1px solid var(--accent);">Switch to Cinematic View</a>
+        </div>
+    </nav>
+
+    <!-- Story Header -->
+    <section class="story-hero">
+        <div class="container text-center">
+            <h4 class="text-accent uppercase fade-in">Chapter I</h4>
+            <h1 class="serif fade-in" style="font-size: 72px; margin: 20px 0;">The Forest Awakes</h1>
+            <p class="fade-in" style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">Experience the transition from misty dawns to vibrant afternoons. A day at Sylvan is a dialogue between soul and soil.</p>
+        </div>
+    </section>
+
+    <!-- Scroll Chapters -->
+    <main>
+        <section class="chapter flex align-center">
+            <div class="chapter-img" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="chapter-content container">
+                <div class="glass" style="max-width: 500px; padding: 60px;">
+                    <h4 class="text-accent uppercase">06:00 AM</h4>
+                    <h2 class="serif" style="font-size: 42px; margin: 15px 0;">Misty Mornings</h2>
+                    <p>Wake up to the symphony of howler monkeys and the gentle tapping of mist on your canopy window. Your private deck becomes a front-row seat to the forest's breath.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chapter flex align-center reverse">
+            <div class="chapter-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="chapter-content container">
+                <div class="glass" style="max-width: 500px; padding: 60px;">
+                    <h4 class="text-accent uppercase">12:00 PM</h4>
+                    <h2 class="serif" style="font-size: 42px; margin: 15px 0;">High Canopy Life</h2>
+                    <p>As the sun peaks, the rainforest vibrates with life. Enjoy a locally sourced lunch served 30 meters above the ground, overlooking a sea of endless green.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chapter flex align-center">
+            <div class="chapter-img" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="chapter-content container">
+                <div class="glass" style="max-width: 500px; padding: 60px;">
+                    <h4 class="text-accent uppercase">08:00 PM</h4>
+                    <h2 class="serif" style="font-size: 42px; margin: 15px 0;">Starlit Silence</h2>
+                    <p>The night reveals a different world. Guided by the moon, retreat to your luxury sanctuary where the only sound is the rhythm of the wild.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Final CTA -->
+    <section class="section-padding text-center" style="background: var(--primary);">
+        <div class="container">
+            <h2 class="serif" style="font-size: 56px; margin-bottom: 30px;">Your Story Begins Here</h2>
+            <div class="flex" style="justify-content: center; gap: 20px;">
+                <a href="booking.html" class="btn btn-primary" style="background-color: var(--white); color: var(--primary);">Start Your Journey</a>
+                <a href="about.html" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer same as index but simpler -->
+    <footer style="padding: 40px 0; border-top: 1px solid var(--glass-border); text-align: center;">
+        <div class="container">
+            <div class="serif" style="font-size: 24px; margin-bottom: 20px;">SYLVAN</div>
+            <p style="font-size: 12px; color: var(--text-muted);">&copy; 2026 Sylvan Retreat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        body.storytelling {
+            background-color: var(--secondary);
+        }
+
+        .story-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #0B3D2E 0%, #1A1A1A 100%);
+        }
+
+        .chapter {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        .chapter.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .chapter-content {
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-content {
+                padding: 20px;
+            }
+            .glass {
+                padding: 30px !important;
+            }
+        }
+    </style>
+</body>
+</html>

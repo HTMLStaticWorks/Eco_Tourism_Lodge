@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Stories | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .testimonial-card { padding: 50px; position: relative; }
+        .quote { font-size: 24px; font-style: italic; line-height: 1.6; margin-bottom: 30px; }
+        .author { display: flex; align-items: center; gap: 20px; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="testimonials.html" class="text-accent">Testimonials</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-padding" style="margin-top: 50px;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <h4 class="text-accent uppercase">Guest Stories</h4>
+                <h1 class="serif" style="font-size: 64px;">Echoes of the Forest</h1>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card glass">
+                    <p class="quote">"Sylvan is not just a lodge; it's a recalibration of the soul. Watching the sunrise from the Celestial Suite was the most cinematic moment of my life."</p>
+                    <div class="author">
+                        <div class="author-img" style="background-image: url('https://i.pravatar.cc/150?u=1'); background-size: cover;"></div>
+                        <div>
+                            <h4 class="serif">Elena Vance</h4>
+                            <p style="font-size: 12px; color: var(--text-muted);">Stayed April 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass">
+                    <p class="quote">"The commitment to sustainability is real. You can feel the harmony between the architecture and the wild. The night safari was breathtaking."</p>
+                    <div class="author">
+                        <div class="author-img" style="background-image: url('https://i.pravatar.cc/150?u=2'); background-size: cover;"></div>
+                        <div>
+                            <h4 class="serif">Marcus Thorne</h4>
+                            <p style="font-size: 12px; color: var(--text-muted);">Stayed January 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

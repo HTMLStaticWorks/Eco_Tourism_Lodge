@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect | Sylvan Retreat</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; color: var(--accent); }
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: white;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        input:focus, textarea:focus { border-color: var(--accent); outline: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <ul class="flex align-center nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stay.html">Stay</a></li>
+                <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="contact.html" class="text-accent">Contact</a></li>
+                <li><a href="booking.html" class="btn btn-primary" style="margin-left: 20px;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549130031-159c8ec5c3e7?auto=format&fit=crop&w=1600&q=80'); height: 50vh; display: flex; align-items: center; text-align: center;">
+        <div class="container">
+            <h1 class="serif" style="font-size: 64px;">Begin Your Journey</h1>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container contact-grid">
+            <div>
+                <h2 class="serif" style="font-size: 42px; margin-bottom: 20px;">Inquire with our Concierge</h2>
+                <p style="color: var(--text-muted); margin-bottom: 40px;">Whether you're planning a honeymoon, a conservation research trip, or a solo escape, our team is here to curate the perfect experience.</p>
+                
+                <div style="margin-bottom: 30px;">
+                    <h4 class="text-accent uppercase" style="font-size: 12px; margin-bottom: 5px;">Reservation Desk</h4>
+                    <p>+1 (555) 795-8260<br>reservations@sylvanretreat.com</p>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <h4 class="text-accent uppercase" style="font-size: 12px; margin-bottom: 5px;">Headquarters</h4>
+                    <p>Manaus, Amazonas State<br>Brazil, Sector 7</p>
+                </div>
+            </div>
+
+            <div class="glass" style="padding: 40px; border-radius: var(--radius);">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Alex Johnson">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="alex@forest.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Inquiry</label>
+                        <textarea rows="5" placeholder="Tell us about your dream rainforest escape..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
