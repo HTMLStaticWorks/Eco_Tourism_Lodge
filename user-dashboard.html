@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/images/logo-icon.png">
     <style>
-        body { display: flex; min-height: 100vh; background: var(--secondary); }
+        body { display: flex; min-height: 100vh; background: var(--secondary); color: var(--text-main); font-family: 'Inter', sans-serif; }
         
         .sidebar {
             width: 300px;
             background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-right: 1px solid var(--glass-border);
-            padding: 40px 20px;
+            padding: 40px 24px;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            z-index: 100;
             height: 100vh;
             position: sticky;
             top: 0;
@@ -29,69 +31,90 @@
             gap: 10px;
         }
 
-        .main-content { flex: 1; padding: 60px; overflow-y: auto; }
+        .main-content { flex: 1; padding: 60px; overflow-y: auto; background: var(--bg-dark); }
 
         .nav-item {
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 5px;
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 15px;
             font-size: 14px;
             color: var(--text-muted);
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.5px;
         }
-        .nav-item.active { background: var(--glass); color: var(--accent); }
-        .nav-item:hover { background: var(--glass); }
+        .nav-item.active { background: var(--glass); color: var(--accent); border: 1px solid var(--glass-border); }
+        .nav-item:hover { background: var(--glass); color: var(--accent); transform: translateX(5px); }
 
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 50px; }
-        .stat-card { padding: 30px; border-radius: var(--radius); }
+        .stat-card { padding: 30px; border-radius: var(--radius); border: 1px solid var(--glass-border); background: var(--glass); }
 
         .booking-row {
             padding: 25px;
             background: var(--glass);
-            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: 0.3s;
         }
+        .booking-row:hover { border-color: var(--accent); transform: translateY(-3px); }
+        
         .status-badge {
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 10px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             background: rgba(197, 160, 89, 0.1);
             color: var(--accent);
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <div class="logo">
-            <a href="index.html" class="flex align-center" style="text-decoration: none; margin-bottom: 60px; padding-left: 20px;">
-                <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon" style="width: 30px; margin-right: 10px;">
-                <span class="serif" style="font-size: 24px; color: white;">SYLVAN</span>
+        <div class="logo" style="margin-bottom: 50px;">
+            <a href="index.html" class="flex align-center" style="text-decoration: none; padding: 0 10px;">
+                <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon" style="height: 32px; margin-right: 12px;">
+                <h2 class="serif" style="font-size: 24px; color: var(--white); letter-spacing: 2px; margin: 0;">SYLVAN</h2>
             </a>
         </div>
-        <nav>
-            <a href="#" class="nav-item active">Overview</a>
-            <a href="#" class="nav-item">My Bookings</a>
-            <a href="#" class="nav-item">Itinerary</a>
-            <a href="#" class="nav-item">Settings</a>
-            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
-            <a href="index.html" class="nav-item">Log Out</a>
-        </nav>
     </aside>
+
+    <div class="dashboard-header-mobile">
+        <div class="logo">
+            <a href="index.html" class="flex align-center">
+                <img src="assets/images/logo-icon.png" alt="Sylvan Icon" style="height: 24px; margin-right: 10px;">
+                <h2 class="serif" style="font-size: 18px; letter-spacing: 1px; margin: 0;">SYLVAN</h2>
+            </a>
+        </div>
+        <div id="sidebar-toggle" class="nav-toggle active" style="display: block;">
+            <div class="hamburger"></div>
+        </div>
+    </div>
 
     <main class="main-content">
         <header class="flex justify-between align-center" style="margin-bottom: 40px;">
             <h1 class="serif" style="font-size: 38px;">Welcome back, Alex</h1>
-            <div class="glass" style="padding: 10px 20px; border-radius: 30px; font-size: 14px;">Member Tier: <span class="text-accent">Gold Leaf</span></div>
+            <div class="flex align-center" style="gap: 20px;">
+                <div class="toggles">
+                    <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
+                    <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
+                </div>
+                <div class="glass" style="padding: 10px 20px; border-radius: 30px; font-size: 14px;">Member Tier: <span class="text-accent">Gold Leaf</span></div>
+            </div>
         </header>
+
+        <script src="js/theme-toggle.js"></script>
+    <script src="js/mobile-menu.js"></script>
 
         <section class="stats-grid">
             <div class="stat-card glass">

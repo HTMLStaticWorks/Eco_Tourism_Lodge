@@ -9,6 +9,29 @@
 </head>
 <body style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;">
 
+    <div class="toggles" style="position: absolute; top: 40px; right: 40px; z-index: 100;">
+        <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
+        <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
+    <nav class="glass-dark">
+        <div class="container flex justify-between align-center">
+            <div class="logo">
+                <a href="index.html" class="flex align-center">
+                    <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon">
+                    <span class="serif" style="font-size: 24px; letter-spacing: 2px;">SYLVAN</span>
+                </a>
+            </div>
+            <div class="nav-cta">
+                <div class="toggles">
+                    <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
+                    <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/mobile-menu.js"></script>
+
     <div class="container">
         <h4 class="text-accent uppercase" style="letter-spacing: 4px;">Error 404</h4>
         <h1 class="serif" style="font-size: 120px; color: var(--accent); line-height: 1;">Lost.</h1>

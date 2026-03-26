@@ -14,13 +14,16 @@
             height: 100%;
             margin: 0;
             overflow: hidden;
-            background: #0a0a0a;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            transition: background 0.3s, color 0.3s;
         }
 
         .login-wrapper {
             height: 100vh;
             width: 100%;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('cinematic_jungle_login_bg_1774512994947.png');
+            /* Theme-aware overlay */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('cinematic_jungle_login_bg_1774512994947.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -28,17 +31,22 @@
             align-items: center;
         }
 
+        [data-theme="light"] .login-wrapper {
+            background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.6)), url('cinematic_jungle_login_bg_1774512994947.png');
+        }
+
         .login-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             padding: 60px;
-            border-radius: 4px;
+            border-radius: var(--radius);
             width: 100%;
             max-width: 450px;
             text-align: center;
             animation: fadeInScale 0.8s ease-out;
+            color: var(--white); /* This flips to black in index.css light mode */
         }
 
         @keyframes fadeInScale {
@@ -49,6 +57,7 @@
         .login-card h1 {
             margin-bottom: 10px;
             letter-spacing: 2px;
+            color: var(--white);
         }
 
         .login-card p {
@@ -131,9 +140,12 @@
 </head>
 <body>
 
-    <a href="index.html" class="back-home">
-        <span>&larr;</span> Back to Sanctuary
-    </a>
+    <div class="toggles" style="position: absolute; top: 40px; right: 40px; z-index: 100;">
+        <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
+        <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
+    </div>
+
+    <script src="js/theme-toggle.js"></script>
 
     <div class="login-wrapper">
         <div class="login-card">
