@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Escape | Sylvan Retreat</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/images/logo-icon.png">
     <style>
         .booking-stepper {
             display: flex;
@@ -118,7 +119,12 @@
 
     <nav class="glass-dark">
         <div class="container flex justify-between align-center">
-            <div class="logo serif" style="font-size: 24px;"><a href="index.html">SYLVAN</a></div>
+            <div class="logo">
+                <a href="index.html" class="flex align-center">
+                    <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon">
+                    <span class="serif" style="font-size: 24px; letter-spacing: 2px;">SYLVAN</span>
+                </a>
+            </div>
             <a href="index.html" class="text-accent uppercase" style="font-size: 12px;">Back to Journal</a>
         </div>
     </nav>
@@ -159,11 +165,11 @@
                     
                     <div class="glass" style="padding: 30px;">
                         <h4 class="uppercase" style="margin-bottom: 15px; font-size: 12px; opacity: 0.6;">April 2026</h4>
-                        <div class="calendar-mock">
+                        <div class="calendar-mock" id="calendar">
                             <!-- Simple mock calendar -->
-                            <div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div>
-                            <div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day selected">10</div><div class="calendar-day selected">11</div><div class="calendar-day selected">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div>
-                            <div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div>
+                            <div class="calendar-day" data-date="2026-04-01">1</div><div class="calendar-day" data-date="2026-04-02">2</div><div class="calendar-day" data-date="2026-04-03">3</div><div class="calendar-day" data-date="2026-04-04">4</div><div class="calendar-day" data-date="2026-04-05">5</div><div class="calendar-day" data-date="2026-04-06">6</div><div class="calendar-day" data-date="2026-04-07">7</div>
+                            <div class="calendar-day" data-date="2026-04-08">8</div><div class="calendar-day" data-date="2026-04-09">9</div><div class="calendar-day" data-date="2026-04-10" id="default-start">10</div><div class="calendar-day" data-date="2026-04-11">11</div><div class="calendar-day" data-date="2026-04-12" id="default-end">12</div><div class="calendar-day" data-date="2026-04-13">13</div><div class="calendar-day" data-date="2026-04-14">14</div>
+                            <div class="calendar-day" data-date="2026-04-15">15</div><div class="calendar-day" data-date="2026-04-16">16</div><div class="calendar-day" data-date="2026-04-17">17</div><div class="calendar-day" data-date="2026-04-18">18</div><div class="calendar-day" data-date="2026-04-19">19</div><div class="calendar-day" data-date="2026-04-20">20</div><div class="calendar-day" data-date="2026-04-21">21</div>
                         </div>
                     </div>
                 </div>
@@ -171,8 +177,8 @@
                 <!-- Step 2: Accommodation -->
                 <div class="booking-section" id="section-2">
                     <h2 class="serif" style="font-size: 32px; margin-bottom: 10px;">Choose Your Sanctuary</h2>
-                    <div class="room-select">
-                        <div class="room-option active selected">
+                    <div class="room-select" id="room-selection">
+                        <div class="room-option active selected" data-room="Celestial Canopy Suite" data-price="850">
                             <img src="assets/images/room-detail.png" alt="Canopy Suite">
                             <div class="room-content">
                                 <h4 class="serif">Celestial Canopy Suite</h4>
@@ -180,7 +186,7 @@
                                 <span class="text-accent">$850/night</span>
                             </div>
                         </div>
-                        <div class="room-option">
+                        <div class="room-option" data-room="Mistwood Eco-Cabin" data-price="550">
                             <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80" alt="Eco Cabin">
                             <div class="room-content">
                                 <h4 class="serif">Mistwood Eco-Cabin</h4>
@@ -197,11 +203,11 @@
                     <div class="glass" style="padding: 40px; display: flex; gap: 40px; justify-content: center;">
                         <div style="text-align: center;">
                             <label class="uppercase" style="display: block; margin-bottom: 10px; font-size: 12px;">Adults</label>
-                            <input type="number" value="2" style="background: var(--glass); border: 1px solid var(--accent); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
+                            <input type="number" id="guests-adults" value="2" min="1" style="background: var(--glass); border: 1px solid var(--accent); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
                         </div>
                         <div style="text-align: center;">
                             <label class="uppercase" style="display: block; margin-bottom: 10px; font-size: 12px;">Children</label>
-                            <input type="number" value="0" style="background: var(--glass); border: 1px solid var(--glass-border); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
+                            <input type="number" id="guests-children" value="0" min="0" style="background: var(--glass); border: 1px solid var(--glass-border); color: white; padding: 15px; width: 80px; text-align: center; font-size: 20px;">
                         </div>
                     </div>
                 </div>
@@ -218,7 +224,7 @@
                         </div>
                         <div class="flex align-center">
                             <span class="text-accent" style="margin-right: 20px;">+$150/person</span>
-                            <button type="button" class="btn btn-outline" style="font-size: 10px; padding: 8px 15px;">Add</button>
+                            <button type="button" class="btn btn-outline enhancement-btn" data-name="The Emerald Trek" data-price="150" style="font-size: 10px; padding: 8px 15px;">Add</button>
                         </div>
                     </div>
                     <div class="upsell-item">
@@ -228,7 +234,7 @@
                         </div>
                         <div class="flex align-center">
                             <span class="text-accent" style="margin-right: 20px;">+$120/person</span>
-                            <button type="button" class="btn btn-outline" style="font-size: 10px; padding: 8px 15px;">Add</button>
+                            <button type="button" class="btn btn-outline enhancement-btn" data-name="Night Safari" data-price="120" style="font-size: 10px; padding: 8px 15px;">Add</button>
                         </div>
                     </div>
                 </div>
@@ -237,17 +243,16 @@
                 <div class="booking-section" id="section-5">
                     <h2 class="serif" style="font-size: 32px; margin-bottom: 30px;">Booking Summary</h2>
                     <div class="glass" style="padding: 40px;">
-                        <div class="flex justify-between" style="margin-bottom: 15px;">
-                            <span>Celestial Canopy Suite (2 Nights)</span>
-                            <span class="text-accent">$1,700</span>
-                        </div>
-                        <div class="flex justify-between" style="margin-bottom: 15px;">
-                            <span>Emerald Trek (2 Adults)</span>
-                            <span class="text-accent">$300</span>
+                        <div id="summary-items">
+                            <!-- Items will be injected here -->
+                            <div class="flex justify-between" style="margin-bottom: 15px;">
+                                <span>Celestial Canopy Suite (2 Nights)</span>
+                                <span class="text-accent">$1,700</span>
+                            </div>
                         </div>
                         <div class="flex justify-between" style="margin-top: 30px; border-top: 1px solid var(--glass-border); padding-top: 20px; font-weight: 600; font-size: 20px;">
                             <span>Total Amount</span>
-                            <span class="text-accent">$2,000</span>
+                            <span class="text-accent" id="summary-total">$1,700</span>
                         </div>
                         <p style="font-size: 12px; color: var(--text-muted); margin-top: 20px;">* Includes all taxes and conservation fees.</p>
                     </div>

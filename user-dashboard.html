@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Dashboard | Sylvan Retreat</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/images/logo-icon.png">
     <style>
         body { display: flex; min-height: 100vh; background: var(--secondary); }
         
         .sidebar {
-            width: 280px;
-            background: rgba(0,0,0,0.3);
+            width: 300px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
             border-right: 1px solid var(--glass-border);
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .main-content { flex: 1; padding: 60px; overflow-y: auto; }
@@ -59,7 +71,12 @@
 <body>
 
     <aside class="sidebar">
-        <div class="logo serif" style="font-size: 24px; margin-bottom: 60px; padding-left: 20px;">SYLVAN</div>
+        <div class="logo">
+            <a href="index.html" class="flex align-center" style="text-decoration: none; margin-bottom: 60px; padding-left: 20px;">
+                <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon" style="width: 30px; margin-right: 10px;">
+                <span class="serif" style="font-size: 24px; color: white;">SYLVAN</span>
+            </a>
+        </div>
         <nav>
             <a href="#" class="nav-item active">Overview</a>
             <a href="#" class="nav-item">My Bookings</a>
