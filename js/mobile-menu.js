@@ -20,9 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking a link
+        // Close menu/toggle dropdown when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                const parentLi = link.parentElement;
+                const dropdown = parentLi.querySelector('.dropdown-menu');
+                
+                // If it's a mobile view and has a dropdown, toggle it
+                if (window.innerWidth <= 992 && dropdown) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle this dropdown
+                    dropdown.classList.toggle('active');
+                    
+                    // Rotate chevron if it exists
+                    const chevron = link.querySelector('.chevron');
+                    if (chevron) {
+                        chevron.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                        chevron.style.display = 'inline-block';
+                        chevron.style.transition = '0.3s';
+                    }
+                    
+                    return;
+                }
+
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
                 document.body.style.overflow = '';
@@ -30,23 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Dashboard Sidebar Toggle (Mobile)
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
 
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992 && 
-                sidebar.classList.contains('active') && 
-                !sidebar.contains(e.target) && 
-                e.target !== sidebarToggle) {
-                sidebar.classList.remove('active');
-            }
-        });
-    }
 });

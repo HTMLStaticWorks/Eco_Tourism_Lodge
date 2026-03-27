@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Sylvan Retreat Admin</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/images/logo-icon.png">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-dark); /* Use variable for theme support */
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(11, 61, 46, 0.1);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--glass-border);
+            padding: 40px 20px;
+            display: flex !important;
+            flex-direction: column !important;
+            z-index: 2000; /* Ensure it's above index.css nav */
+        }
+
+        /* Reset global nav interference */
+        .sidebar div, .sidebar nav, .sidebar a {
+            position: static;
+            width: auto;
+            height: auto;
+            display: flex;
+        }
+
+        .sidebar-logo {
+            margin-bottom: 60px;
+            padding-left: 10px;
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex !important;
+            flex-direction: column !important;
+            margin-top: 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 20px;
+            color: var(--text-muted);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--glass);
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--glass);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            padding: 30px;
+            border-radius: var(--radius);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            margin: 10px 0 5px;
+            color: var(--white);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Chart Section */
+        .chart-container {
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .visual-chart {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            padding-top: 20px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--accent), transparent);
+            border-radius: 4px 4px 0 0;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .chart-bar:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Recent Activity Table */
+        .table-container {
+            padding: 30px;
+            border-radius: var(--radius);
+            overflow-x: auto; /* Allow horizontal scroll for large tables on mobile */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding: 15px;
+            border-bottom: 1px solid var(--glass-border);
+            font-size: 14px;
+        }
+
+        td {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+        }
+
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .status-confirmed { background: rgba(0, 255, 127, 0.1); color: #00ff7f; }
+        .status-pending { background: rgba(255, 165, 0, 0.1); color: #ffa500; }
+
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            :root { --sidebar-width: 250px; }
+            .sidebar { 
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 20px 0 50px rgba(0,0,0,0.5);
+                width: var(--sidebar-width);
+                padding: 30px 20px;
+                display: flex !important;
+            }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; padding-top: 80px; }
+            .dash-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .dash-header .flex { width: 100%; justify-content: space-between; }
+            .stats-grid { grid-template-columns: 1fr; gap: 15px; }
+            .stat-card { padding: 20px; }
+            .stat-value { font-size: 28px; }
+            
+            /* Mobile Toggle */
+            .mobile-dash-nav {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background: var(--bg-dark);
+                border-bottom: 1px solid var(--glass-border);
+                z-index: 1000;
+                padding: 0 20px;
+                justify-content: space-between;
+                align-items: center;
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        .mobile-dash-nav { display: none; }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            backdrop-filter: blur(5px);
+        }
+        .sidebar-overlay.active { display: block; }
+
+        @media (max-width: 480px) {
+            .dash-header h1 { font-size: 24px; }
+            .user-profile span { display: none; }
+            .visual-chart { height: 150px; }
+        }
+
+        /* RTL Dashboard Support */
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+            border-right: none;
+            border-left: 1px solid var(--glass-border);
+        }
+
+        [dir="rtl"] .main-content {
+            margin-left: 0;
+            margin-right: var(--sidebar-width);
+        }
+
+        @media (max-width: 768px) {
+            [dir="rtl"] .main-content {
+                margin-right: 80px;
+            }
+        }
+
+        /* Light Mode Dashboard Adjustments */
+        [data-theme="light"] body {
+            background-color: #f5f7f6;
+        }
+        [data-theme="light"] .sidebar {
+            background: rgba(11, 61, 46, 0.03);
+        }
+        [data-theme="light"] .stat-value {
+            color: var(--primary);
+        }
+        [data-theme="light"] .user-profile {
+            background: white;
+            border-color: #ddd;
+        }
+        [data-theme="light"] .stat-card.glass, [data-theme="light"] .chart-container.glass, [data-theme="light"] .table-container.glass {
+            background: white;
+            border-color: #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        [data-theme="light"] th { border-bottom-color: #eee; }
+        [data-theme="light"] td { color: #444; }
+
+        /* Tab System */
+        .dashboard-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Settings Styles */
+        .settings-form {
+            max-width: 600px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            color: white;
+            border-radius: 4px;
+        }
+        [data-theme="light"] .form-group input { color: #333; border-color: #ddd; }
+
+    </style>
+</head>
+<body onclick="closeSidebarOnOutsideClick(event)">
+
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="mobile-dash-nav">
+        <div class="flex align-center">
+            <img src="assets/images/logo-icon.png" alt="Sylvan" style="width: 24px; margin-right: 10px;">
+            <span class="serif" style="font-size: 18px; letter-spacing: 1px;">SYLVAN</span>
+        </div>
+        <button class="toggle-btn" onclick="toggleSidebar()" style="background: var(--glass); padding: 8px 15px; border-radius: 4px;">Menu ☰</button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="dash-sidebar">
+        <div class="sidebar-logo">
+            <a href="index.html" class="flex align-center">
+                <img src="assets/images/logo-icon.png" alt="Sylvan Icon" class="logo-icon" style="width: 30px; height: auto !important;">
+                <span class="serif" style="font-size: 20px; letter-spacing: 2px; margin-left: 10px; display: block !important;">SYLVAN</span>
+            </a>
+        </div>
+        
+        <div class="nav-menu">
+            <a href="javascript:void(0)" class="nav-item active" onclick="switchTab('overview', this)">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Overview</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="switchTab('bookings', this)">
+                <span class="nav-icon">📅</span>
+                <span class="nav-text">Bookings</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="switchTab('guests', this)">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Guests</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="switchTab('sustainability', this)">
+                <span class="nav-icon">🌿</span>
+                <span class="nav-text">Sustainability</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="switchTab('settings', this)">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </div>
+
+        <div class="nav-menu" style="margin-top: auto; flex: 0;">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Exit Dashboard</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="dash-header">
+            <div>
+                <h1 class="serif" style="font-size: 32px; margin-bottom: 5px;">Welcome back, Alex</h1>
+                <p style="color: var(--text-muted);">Here's what's happening at the retreat today.</p>
+            </div>
+            <div class="flex align-center" style="gap: 20px;">
+                <div class="toggles">
+                    <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
+                    <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">A</div>
+                    <span style="font-size: 14px; font-weight: 500;">Alex Riverside</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- SECTION: OVERVIEW -->
+        <div id="tab-overview" class="dashboard-section active">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-label">Total Guests</div>
+                    <div class="stat-value">124</div>
+                    <div style="font-size: 12px; color: #00ff7f;">↑ 12% from last month</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Revenue</div>
+                    <div class="stat-value">$42,500</div>
+                    <div style="font-size: 12px; color: #00ff7f;">↑ 8% from last month</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Occupancy</div>
+                    <div class="stat-value">94%</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Current Avg.</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Eco-Impact</div>
+                    <div class="stat-value">A+</div>
+                    <div style="font-size: 12px; color: var(--accent);">Sustainability Score</div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="chart-container glass">
+                <div class="chart-header">
+                    <h3 class="serif">Occupancy Trends</h3>
+                    <div class="flex" style="gap: 10px;">
+                        <span style="font-size: 12px; color: var(--accent);">2026 Trend</span>
+                    </div>
+                </div>
+                <div class="visual-chart">
+                    <div class="chart-bar" style="height: 40%;" title="Jan: 40%"></div>
+                    <div class="chart-bar" style="height: 60%;" title="Feb: 60%"></div>
+                    <div class="chart-bar" style="height: 55%;" title="Mar: 55%"></div>
+                    <div class="chart-bar" style="height: 85%;" title="Apr: 85%"></div>
+                    <div class="chart-bar" style="height: 94%;" title="Today: 94%"></div>
+                    <div class="chart-bar" style="height: 70%; opacity: 0.3;" title="Projected: 70%"></div>
+                    <div class="chart-bar" style="height: 80%; opacity: 0.3;" title="Projected: 80%"></div>
+                </div>
+            </div>
+
+            <!-- Recent Bookings -->
+            <div class="table-container glass">
+                <h3 class="serif">Recent Activity</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guest</th>
+                            <th>Stay Type</th>
+                            <th>Dates</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="flex align-center" style="gap: 10px;">
+                                <div class="user-avatar" style="width: 25px; height: 25px; font-size: 10px; background: rgba(255,255,255,0.1); color: white;">EB</div>
+                                Elena Brooks
+                            </td>
+                            <td>Canopy Suite</td>
+                            <td>Mar 28 - Apr 2</td>
+                            <td>$3,200</td>
+                            <td><span class="status-pill status-confirmed">Confirmed</span></td>
+                        </tr>
+                        <tr>
+                            <td class="flex align-center" style="gap: 10px;">
+                                <div class="user-avatar" style="width: 25px; height: 25px; font-size: 10px; background: rgba(255,255,255,0.1); color: white;">MR</div>
+                                Marcus Reed
+                            </td>
+                            <td>Forest Villa</td>
+                            <td>Mar 30 - Apr 5</td>
+                            <td>$5,450</td>
+                            <td><span class="status-pill status-pending">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION: BOOKINGS -->
+        <div id="tab-bookings" class="dashboard-section">
+            <div class="flex justify-between align-center" style="margin-bottom: 30px;">
+                <h2 class="serif">Master Booking Log</h2>
+                <button class="btn btn-primary" style="padding: 10px 20px; font-size: 12px;">+ New Booking</button>
+            </div>
+            <div class="table-container glass">
+                <div class="flex" style="gap: 15px; margin-bottom: 20px;">
+                    <select class="glass" style="padding: 8px; color: white; border: 1px solid var(--glass-border); border-radius: 4px;">
+                        <option>All Status</option>
+                        <option>Confirmed</option>
+                        <option>Pending</option>
+                    </select>
+                    <input type="text" placeholder="Search Guest Name..." class="glass" style="padding: 8px; color: white; border: 1px solid var(--glass-border); border-radius: 4px; flex: 1;">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Guest</th>
+                            <th>Stay</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#SR-8802</td>
+                            <td>Elena Brooks</td>
+                            <td>Canopy Suite</td>
+                            <td>Mar 28, 2026</td>
+                            <td>Apr 02, 2026</td>
+                            <td>$3,200</td>
+                            <td><span class="status-pill status-confirmed">Confirmed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#SR-8803</td>
+                            <td>Marcus Reed</td>
+                            <td>Forest Villa</td>
+                            <td>Mar 30, 2026</td>
+                            <td>Apr 05, 2026</td>
+                            <td>$5,450</td>
+                            <td><span class="status-pill status-pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>#SR-8804</td>
+                            <td>Sarah Chen</td>
+                            <td>River Suite</td>
+                            <td>Apr 02, 2026</td>
+                            <td>Apr 08, 2026</td>
+                            <td>$4,100</td>
+                            <td><span class="status-pill status-confirmed">Confirmed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#SR-8805</td>
+                            <td>David Miller</td>
+                            <td>Eco-Pod</td>
+                            <td>Apr 10, 2026</td>
+                            <td>Apr 14, 2026</td>
+                            <td>$1,850</td>
+                            <td><span class="status-pill status-confirmed">Confirmed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION: GUESTS -->
+        <div id="tab-guests" class="dashboard-section">
+            <h2 class="serif" style="margin-bottom: 30px;">Guest Directory</h2>
+            <div class="stats-grid" style="margin-bottom: 30px; grid-template-columns: repeat(3, 1fr);">
+                <div class="stat-card glass" style="padding: 20px;">
+                    <div class="stat-label">Total in Database</div>
+                    <div class="stat-value">1,402</div>
+                </div>
+                <div class="stat-card glass" style="padding: 20px;">
+                    <div class="stat-label">Returning Guests</div>
+                    <div class="stat-value">42%</div>
+                </div>
+                <div class="stat-card glass" style="padding: 20px;">
+                    <div class="stat-label">Membership Tier Avg</div>
+                    <div class="stat-value">Gold</div>
+                </div>
+            </div>
+            <div class="table-container glass">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guest Name</th>
+                            <th>Status</th>
+                            <th>Total Stays</th>
+                            <th>Total Spent</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Elena Brooks</td>
+                            <td><span style="color: var(--accent);">Gold Member</span></td>
+                            <td>4</td>
+                            <td>$12,400</td>
+                            <td>elena.b@email.com</td>
+                        </tr>
+                        <tr>
+                            <td>Marcus Reed</td>
+                            <td style="color: var(--text-muted);">Silver Member</td>
+                            <td>1</td>
+                            <td>$5,450</td>
+                            <td>m.reed@email.com</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Chen</td>
+                            <td><span style="color: var(--accent);">Gold Member</span></td>
+                            <td>3</td>
+                            <td>$9,800</td>
+                            <td>schen@email.com</td>
+                        </tr>
+                        <tr>
+                            <td>James Wilson</td>
+                            <td style="color: var(--text-muted);">Guest</td>
+                            <td>1</td>
+                            <td>$2,100</td>
+                            <td>jamesw@email.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION: SUSTAINABILITY -->
+        <div id="tab-sustainability" class="dashboard-section">
+            <h2 class="serif" style="margin-bottom: 30px;">Sustainability Dashboard</h2>
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-label">Water Consumption</div>
+                    <div class="stat-value">-15%</div>
+                    <div style="font-size: 12px; color: #00ff7f;">vs. last year</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Energy Sourced</div>
+                    <div class="stat-value">100%</div>
+                    <div style="font-size: 12px; color: var(--accent);">Solar/Biomass</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Waste Diversion</div>
+                    <div class="stat-value">88%</div>
+                    <div style="font-size: 12px; color: #00ff7f;">Recycled/Composted</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Carbon Offset</div>
+                    <div class="stat-value">RA-012</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Verified Batch</div>
+                </div>
+            </div>
+            <div class="chart-container glass">
+                <h3 class="serif">Eco-Metrics (Monthly)</h3>
+                <div class="visual-chart">
+                    <div class="chart-bar" style="height: 90%; background: #00ff7f;" title="Solar Energy"></div>
+                    <div class="chart-bar" style="height: 40%; background: #4ecdc4;" title="Water Recycling"></div>
+                    <div class="chart-bar" style="height: 75%; background: #ff6b6b;" title="Waste Diversion"></div>
+                    <div class="chart-bar" style="height: 60%; background: #ffe66d;" title="Local Sourcing"></div>
+                </div>
+                <div class="flex justify-between" style="margin-top: 15px; font-size: 12px; color: var(--text-muted);">
+                    <span>Solar</span>
+                    <span>Water</span>
+                    <span>Waste</span>
+                    <span>Sourcing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: SETTINGS -->
+        <div id="tab-settings" class="dashboard-section">
+            <h2 class="serif" style="margin-bottom: 30px;">System Settings</h2>
+            <div class="settings-form glass" style="padding: 40px; border-radius: var(--radius);">
+                <div class="form-group">
+                    <label>Lodge Public Name</label>
+                    <input type="text" value="Sylvan Retreat Eco-Lodge">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Currency</label>
+                        <select>
+                            <option>USD ($)</option>
+                            <option>EUR (€)</option>
+                            <option>GBP (£)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Timezone</label>
+                        <select>
+                            <option>(GMT-05:00) Bogota, Lima</option>
+                            <option>(GMT+00:00) London</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Admin Email</label>
+                    <input type="email" value="alex@sylvanretreat.com">
+                </div>
+                <div class="form-group">
+                    <label>Notification Preferences</label>
+                    <div class="flex" style="gap: 20px; font-size: 14px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" checked style="width: auto;"> Email Alerts
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" checked style="width: auto;"> SMS for Urgent
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 20px;">Save Changes</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId, element) {
+            // Remove active class from all items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            element.classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            // Close sidebar on mobile after switching
+            if (window.innerWidth <= 992) {
+                toggleSidebar();
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('dash-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebarOnOutsideClick(event) {
+            const sidebar = document.getElementById('dash-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar.classList.contains('active') && !sidebar.contains(event.target) && !event.target.closest('.toggle-btn') && !event.target.closest('.mobile-dash-nav')) {
+                toggleSidebar();
+            }
+        }
+    </script>
+    <div id="scroll-top" class="scroll-top">↑</div>
+    <script src="js/scroll-top.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/mobile-menu.js"></script>
+</body>
+</html>

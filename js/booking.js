@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Final Confirmation
             alert('Your journey to Sylvan Retreat is confirmed! Check your email for logic details.');
-            window.location.href = 'user-dashboard.html';
+            window.location.href = 'dashboard.html';
         }
     }
 
