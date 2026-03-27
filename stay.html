@@ -78,7 +78,7 @@
                             <li>Skylight</li>
                             <li>Butler Service</li>
                         </ul>
-                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                        <div class="btn-group">
                             <a href="stay-detail.html" class="btn btn-outline">Explore Suite</a>
                             <a href="booking.html" class="btn btn-primary">Book Now</a>
                         </div>
@@ -97,7 +97,7 @@
                             <li>Stone Bath</li>
                             <li>Solar Powered</li>
                         </ul>
-                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                        <div class="btn-group">
                             <a href="stay-detail.html" class="btn btn-outline">Explore Cabin</a>
                             <a href="booking.html" class="btn btn-primary">Book Now</a>
                         </div>
@@ -116,11 +116,64 @@
                             <li>Observation Deck</li>
                             <li>Wine Cellar</li>
                         </ul>
-                        <div class="flex" style="margin-top: 30px; gap: 20px;">
+                        <div class="btn-group">
                             <a href="stay-detail.html" class="btn btn-outline">Explore Villa</a>
                             <a href="booking.html" class="btn btn-primary">Book Now</a>
                         </div>
                     </div>
+                </div>
+
+                <div class="stay-card flex reverse">
+                    <div class="stay-img" style="background-image: url('https://images.unsplash.com/photo-1448375033059-5ac38298b40c?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="stay-info glass">
+                        <h4 class="text-accent">Starting at $450/night</h4>
+                        <h2 class="serif">The Observation Skybox</h2>
+                        <p>Designed for the solo explorer. A minimalist, high-altitude pod offering uninterrupted views of the morning mist and stars.</p>
+                        <ul class="amenities flex">
+                            <li>Single Loft</li>
+                            <li>Star View Deck</li>
+                            <li>Solar Powered</li>
+                            <li>Compact Living</li>
+                        </ul>
+                        <div class="btn-group">
+                            <a href="stay-detail.html" class="btn btn-outline">Explore Skybox</a>
+                            <a href="booking.html" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Sylvan Standard Section Removed -->
+
+    <!-- The Guest Journey (Timeline) -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h4 class="text-accent uppercase">The Journey</h4>
+                <h2 class="serif" style="font-size: 42px;">Your Arrival Narrative</h2>
+            </div>
+            <div class="flex justify-between" style="gap: 40px; position: relative; padding-bottom: 40px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px; text-align: center;">
+                    <h3 class="serif text-accent" style="font-size: 32px; margin-bottom: 15px;">01</h3>
+                    <h4 class="uppercase" style="letter-spacing: 2px;">Welcome Ritual</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">Traditional herbal infusion upon landing at our private dock.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; text-align: center;">
+                    <h3 class="serif text-accent" style="font-size: 32px; margin-bottom: 15px;">02</h3>
+                    <h4 class="uppercase" style="letter-spacing: 2px;">Naturalist Intro</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">A brief briefing on the week's conservation efforts and wildlife.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; text-align: center;">
+                    <h3 class="serif text-accent" style="font-size: 32px; margin-bottom: 15px;">03</h3>
+                    <h4 class="uppercase" style="letter-spacing: 2px;">Suite Induction</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">Settle in and learn about the unique eco-features of your sanctuary.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; text-align: center;">
+                    <h3 class="serif text-accent" style="font-size: 32px; margin-bottom: 15px;">04</h3>
+                    <h4 class="uppercase" style="letter-spacing: 2px;">Eco-Enlightenment</h4>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-top: 10px;">A guided tour of our off-grid solar and water restoration systems.</p>
                 </div>
             </div>
         </div>
@@ -155,9 +208,16 @@
             padding: 60px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Start from top */
             border: none;
             border-radius: 0;
+        }
+
+        .stay-info .btn-group {
+            margin-top: auto; /* Pushes buttons to bottom */
+            display: flex;
+            gap: 20px;
+            padding-top: 30px;
         }
 
         .stay-info h2 { font-size: 42px; margin: 10px 0 20px; }
@@ -212,8 +272,10 @@
             <div>
                 <h4 class="uppercase" style="margin-bottom: 20px; letter-spacing: 1px;">Contact Us</h4>
                 <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
-                    hello@sylvanretreat.com<br>
-                    +1 (555) 123-4567
+                    100 Adventure Way, Suite 400<br>
+                    Denver, CO 80202<br>
+                    +1 (800) 555-TEAM<br>
+                    hello@elevate-teams.com
                 </p>
             </div>
             <div>
@@ -228,5 +290,9 @@
             &copy; 2026 Sylvan Retreat Eco-Lodge. All rights reserved.
         </div>
     </footer>
+    <div id="scroll-top" class="scroll-top">↑</div>
+    <script src="js/scroll-top.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html>

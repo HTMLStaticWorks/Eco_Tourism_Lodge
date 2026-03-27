@@ -6,6 +6,33 @@
     <title>Sustainability | Sylvan Retreat</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/images/logo-icon.png">
+    <style>
+        @media (max-width: 992px) {
+            /* General reordering for sustainability layout */
+            .brand-story .flex, .eco-item {
+                flex-direction: column-reverse !important;
+                gap: 40px !important;
+                align-items: flex-start !important;
+            }
+            .eco-item.reverse {
+                flex-direction: column-reverse !important;
+            }
+            /* Reset flex items for full width */
+            .brand-story .flex > div, 
+            .eco-item > div,
+            .eco-content, 
+            .eco-img {
+                width: 100% !important;
+                flex: none !important;
+            }
+            .eco-img {
+                height: 400px !important;
+                background-size: cover;
+                background-position: center;
+                border-radius: var(--radius);
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -176,8 +203,10 @@
             <div>
                 <h4 class="uppercase" style="margin-bottom: 20px; letter-spacing: 1px;">Contact Us</h4>
                 <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
-                    hello@sylvanretreat.com<br>
-                    +1 (555) 123-4567
+                    100 Adventure Way, Suite 400<br>
+                    Denver, CO 80202<br>
+                    +1 (800) 555-TEAM<br>
+                    hello@elevate-teams.com
                 </p>
             </div>
             <div>
@@ -192,5 +221,9 @@
             &copy; 2026 Sylvan Retreat Eco-Lodge. All rights reserved.
         </div>
     </footer>
+    <div id="scroll-top" class="scroll-top">↑</div>
+    <script src="js/scroll-top.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html>

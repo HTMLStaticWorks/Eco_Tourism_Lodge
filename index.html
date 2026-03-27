@@ -61,11 +61,11 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('assets/images/hero-main.png');"></div>
-        <div class="hero-content container fade-in text-center">
+        <div class="hero-bg" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('assets/images/h1.png');"></div>
+        <div class="hero-content container fade-in text-center" style="color: #FFFFFF !important;">
             <h4 class="text-accent uppercase" style="letter-spacing: 4px; margin-bottom: 20px;">Wake up where the forest breathes</h4>
-            <h1 style="line-height: 0.9; margin-bottom: 30px;">Cinematic <br>Nature</h1>
-            <p style="max-width: 600px; font-size: 18px; margin: 0 auto 40px; color: var(--text-muted);">A high-end sanctuary designed for those who seek deep connection with the wild without compromising on luxury.</p>
+            <h1 style="line-height: 0.9; margin-bottom: 30px; color: #FFFFFF !important;">Cinematic <br>Nature</h1>
+            <p style="max-width: 600px; font-size: 18px; margin: 0 auto 40px; color: rgba(255, 255, 255, 0.8) !important;">A high-end sanctuary designed for those who seek deep connection with the wild without compromising on luxury.</p>
             <div class="flex justify-center">
                 <a href="booking.html" class="btn btn-primary">Reserve Your Escape</a>
                 <a href="#experience" class="btn btn-outline" style="margin-left: 20px;">Explore More</a>
@@ -113,18 +113,27 @@
                         <p>Holistic spa treatments using sustainably sourced rainforest botanicals.</p>
                     </div>
                 </div>
+                <div class="exp-card glass fade-in" style="animation-delay: 0.6s;">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1596402444681-37cd72e50664?auto=format&fit=crop&w=800&q=80" alt="Indigenous Culture" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>Indigenous Wisdom</h3>
+                        <p>A deep cultural journey. Learn ancestral stories and traditional forest survival from local elders.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Conservation Section -->
     <section class="section-padding conservation-section">
-        <div class="container flex align-center" style="gap: 80px;">
-            <div style="flex: 1;">
+        <div class="container conservation-container">
+            <div class="conservation-text">
                 <h4 class="text-accent uppercase">Conservation at Heart</h4>
                 <h2 class="serif" style="margin: 20px 0;">A Legacy of Trust & Preservation</h2>
                 <p style="font-size: 18px; margin-bottom: 20px; color: rgba(255,255,255,0.8);">Sylvan Retreat was founded with a single mission: to prove that luxury hospitality and rainforest conservation can coexist.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+                <div class="conservation-stats">
                     <div>
                         <h3 class="text-accent" style="margin-bottom: 10px;">90%</h3>
                         <p style="font-size: 14px; opacity: 0.7;">Of our staff are from local communities, ensuring sustainable growth.</p>
@@ -135,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div style="flex: 1;">
+            <div class="conservation-image">
                 <div class="glass" style="padding: 10px; border-radius: var(--radius);">
                     <img src="assets/images/conservation-hero.png" alt="Conservation Efforts" style="border-radius: var(--radius); width: 100%;">
                 </div>
@@ -218,8 +227,10 @@
             <div>
                 <h4 class="uppercase" style="margin-bottom: 20px; letter-spacing: 1px;">Contact Us</h4>
                 <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
-                    hello@sylvanretreat.com<br>
-                    +1 (555) 123-4567
+                    100 Adventure Way, Suite 400<br>
+                    Denver, CO 80202<br>
+                    +1 (800) 555-TEAM<br>
+                    hello@elevate-teams.com
                 </p>
             </div>
             <div>
@@ -243,7 +254,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background-color: var(--secondary);
         }
 
         .hero-bg {
@@ -254,12 +264,14 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            z-index: -1;
+            z-index: 1;
             transform: scale(1.1);
         }
 
         .hero-content {
-            z-index: 2;
+            position: relative;
+            z-index: 10;
+            color: #FFFFFF;
         }
 
         .scroll-indicator {
@@ -318,9 +330,41 @@
             gap: 50px;
         }
 
+        .conservation-container {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .conservation-text, .conservation-image {
+            flex: 1;
+        }
+
+        .conservation-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
         @media (max-width: 992px) {
             .grid-3, .grid-footer { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
+            
+            .conservation-container {
+                flex-direction: column-reverse;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .conservation-text, .conservation-image {
+                width: 100%;
+                flex: none;
+            }
+
+            .conservation-stats {
+                gap: 20px;
+            }
         }
 
         @media (max-width: 600px) {

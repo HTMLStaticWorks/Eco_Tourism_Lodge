@@ -3,6 +3,25 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Highlight Active Navigation Link
+    let currentPath = window.location.pathname.split('/').pop();
+    if (currentPath === '' || currentPath === '/') currentPath = 'index.html';
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('text-accent', 'active');
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
+            link.classList.add('active');
+            const dropdown = link.closest('.dropdown-menu');
+            if (dropdown) {
+                const parentLink = dropdown.previousElementSibling;
+                if (parentLink && parentLink.tagName === 'A') {
+                    parentLink.classList.add('active');
+                }
+            }
+        }
+    });
+
     // 1. Mobile Menu Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');

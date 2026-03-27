@@ -58,9 +58,9 @@
 
 
 
-    <header class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');">
+    <header class="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');">
         <div class="container">
-            <h1 class="serif" style="font-size: 64px;">Born from the Forest</h1>
+            <h1 class="serif" style="font-size: 64px; color: #FFFFFF; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Born from the Forest</h1>
         </div>
     </header>
 
@@ -80,21 +80,48 @@
         </div>
     </section>
 
-    <section class="section-padding" style="background: #082d22;">
+    <section class="section-padding" style="background: #06211a; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
         <div class="container text-center">
-            <h2 class="serif" style="font-size: 42px; margin-bottom: 60px;">Our Core Values</h2>
+            <h2 class="serif" style="font-size: 42px; margin-bottom: 60px; color: #FFFFFF;">Our Core Values</h2>
             <div class="grid-3">
                 <div class="value-card">
                     <h3 class="text-accent">Sustainability</h3>
-                    <p>100% solar powered, zero single-use plastics, and a closed-loop water system.</p>
+                    <p style="color: rgba(255,255,255,0.8);">100% solar powered, zero single-use plastics, and a closed-loop water system.</p>
                 </div>
                 <div class="value-card">
                     <h3 class="text-accent">Community</h3>
-                    <p>90% of our staff are from the local village, and we support local education programs.</p>
+                    <p style="color: rgba(255,255,255,0.8);">90% of our staff are from the local village, and we support local education programs.</p>
                 </div>
                 <div class="value-card">
                     <h3 class="text-accent">Immersion</h3>
-                    <p>Every detail of our design is intended to dissolve the barrier between you and nature.</p>
+                    <p style="color: rgba(255,255,255,0.8);">Every detail of our design is intended to dissolve the barrier between you and nature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Our Impact Section -->
+    <section class="impact-section" style="background-image: linear-gradient(rgba(11, 61, 46, 0.8), rgba(26, 26, 26, 0.9)), url('assets/images/about-impact.png');">
+        <div class="container text-center">
+            <h4 class="text-accent uppercase" style="margin-bottom: 20px;">Protecting the Wild</h4>
+            <h2 class="serif" style="font-size: 54px; margin-bottom: 80px; color: #FFFFFF;">Our Environmental Footprint</h2>
+            
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-num">14,200</span>
+                    <span class="stat-label">Acres Protected</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Species Tracked</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">0%</span>
+                    <span class="stat-label">Net Carbon</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">12</span>
+                    <span class="stat-label">Active Projects</span>
                 </div>
             </div>
         </div>
@@ -126,8 +153,10 @@
             <div>
                 <h4 class="uppercase" style="margin-bottom: 20px; letter-spacing: 1px;">Contact Us</h4>
                 <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
-                    hello@sylvanretreat.com<br>
-                    +1 (555) 123-4567
+                    100 Adventure Way, Suite 400<br>
+                    Denver, CO 80202<br>
+                    +1 (800) 555-TEAM<br>
+                    hello@elevate-teams.com
                 </p>
             </div>
             <div>
@@ -155,9 +184,45 @@
 
         .value-card {
             padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05); /* Increased contrast for card */
+            border: 1px solid rgba(197, 160, 89, 0.2); /* Accent border */
             border-radius: var(--radius);
+        }
+
+        .impact-section {
+            padding: 120px 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 56px;
+            color: var(--accent);
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 992px) {
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .stat-grid { grid-template-columns: 1fr; }
         }
 
         .value-card h3 {
