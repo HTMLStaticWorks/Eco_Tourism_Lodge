@@ -46,22 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dropdown = parentLi.querySelector('.dropdown-menu');
                 
                 // If it's a mobile view and has a dropdown, toggle it
-                if (window.innerWidth <= 992 && dropdown) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Toggle this dropdown
-                    dropdown.classList.toggle('active');
-                    
-                    // Rotate chevron if it exists
-                    const chevron = link.querySelector('.chevron');
-                    if (chevron) {
-                        chevron.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-                        chevron.style.display = 'inline-block';
-                        chevron.style.transition = '0.3s';
+                if (window.innerWidth <= 1150 && dropdown) {
+                    // If the dropdown is NOT already open, toggle it and prevent navigation
+                    if (!dropdown.classList.contains('active')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close other dropdowns first
+                        navLinks.querySelectorAll('.dropdown-menu').forEach(d => {
+                            if (d !== dropdown) d.classList.remove('active');
+                        });
+
+                        // Toggle this dropdown
+                        dropdown.classList.add('active');
+                        
+                        // Rotate chevron if it exists
+                        const chevron = link.querySelector('.chevron');
+                        if (chevron) {
+                            chevron.style.transform = 'rotate(180deg)';
+                            chevron.style.display = 'inline-block';
+                            chevron.style.transition = '0.3s';
+                        }
+                        return;
                     }
-                    
-                    return;
+                    // If dropdown IS already open, allow regular navigation to link's href
                 }
 
                 navToggle.classList.remove('active');
