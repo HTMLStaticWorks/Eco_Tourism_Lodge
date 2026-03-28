@@ -66,7 +66,7 @@
     </header>
 
     <section class="section-padding">
-        <div class="container flex-md-column align-center gap-md">
+        <div class="container flex-md-column align-center gap-md vision-section">
             <div style="flex: 1;">
                 <h4 class="text-accent uppercase">The Vision</h4>
                 <h2 class="serif" style="font-size: 48px; margin: 20px 0;">A Legacy of Conservation</h2>
@@ -84,7 +84,7 @@
     <section class="section-padding" style="background: #06211a; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
         <div class="container text-center">
             <h2 class="serif" style="font-size: 42px; margin-bottom: 60px; color: #FFFFFF;">Our Core Values</h2>
-            <div class="grid-3">
+            <div class="flex justify-center" style="flex-wrap: wrap; gap: 30px;">
                 <div class="value-card">
                     <h3 class="text-accent">Sustainability</h3>
                     <p style="color: rgba(255,255,255,0.8);">100% solar powered, zero single-use plastics, and a closed-loop water system.</p>
@@ -211,6 +211,19 @@
             gap: 40px;
         }
 
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 30px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+        .value-card {
+            flex: 0 1 calc(50% - 20px);
+            min-width: 300px;
+        }
+
         .stat-num {
             display: block;
             font-size: 56px;
@@ -228,10 +241,20 @@
 
         @media (max-width: 992px) {
             .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .vision-section {
+                flex-direction: column-reverse !important;
+                text-align: center;
+            }
+            .vision-section .glass {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
         }
 
-        @media (max-width: 600px) {
-            .stat-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .stat-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .value-card { flex: 1 1 100%; }
         }
 
         .value-card h3 {

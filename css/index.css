@@ -13,6 +13,8 @@
     --accent: #C5A059;
     --white: #FFFFFF;
     --black: #000000;
+    --fixed-white: #FFFFFF;
+    --fixed-black: #000000;
     
     /* Semantic Colors */
     --bg-dark: var(--secondary);
@@ -1059,14 +1061,16 @@ footer.section-padding {
         backdrop-filter: blur(30px);
         display: flex !important; /* Force display on mobile */
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        gap: 30px;
+        gap: 20px;
         transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         z-index: 2000;
-        padding: 40px;
+        padding: 100px 40px 40px;
         opacity: 0;
         visibility: hidden;
+        overflow-y: auto;
+        max-height: 100vh;
     }
 
     [data-theme="light"] .nav-links {
@@ -1105,6 +1109,10 @@ footer.section-padding {
 
     .dropdown-menu.active {
         display: block !important;
+    }
+
+    [data-theme="light"] .dropdown-menu a {
+        color: var(--text-main) !important;
     }
 
     .dropdown-menu li a {
@@ -1210,9 +1218,20 @@ footer.section-padding {
     .amenity-grid, .testimonial-grid, .footer-grid {
         grid-template-columns: 1fr;
     }
-
     .hero-content h1 {
         font-size: 48px !important;
+    }
+
+    .hero-content .flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+    }
+
+    .hero-content .btn {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto;
     }
 
     .section-title h2 {
@@ -1242,5 +1261,122 @@ html[dir="rtl"] #scroll-top {
     }
 }
 
+/* ==========================================================================
+   RTL SUPPORT (Systematic Flip)
+   ========================================================================== */
+[dir="rtl"] {
+    text-align: right;
+}
 
+[dir="rtl"] .container {
+    text-align: right;
+}
 
+/* Navigation Flip */
+[dir="rtl"] .logo {
+    margin-right: 0;
+    margin-left: initial;
+}
+
+[dir="rtl"] .logo-icon {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+[dir="rtl"] .nav-links {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+[dir="rtl"] .nav-links > li {
+    margin-left: 0;
+    margin-right: 35px;
+}
+
+[dir="rtl"] .chevron {
+    margin-left: 0;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+[dir="rtl"] .dropdown-menu {
+    left: 0;
+    right: auto;
+    transform: translateX(0);
+    text-align: right;
+}
+
+[dir="rtl"] .dropdown-menu a {
+    text-align: right;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+[dir="rtl"] .dropdown-menu a::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .dropdown-menu a:hover {
+    padding-left: 25px;
+    padding-right: 35px;
+}
+
+/* Button & Icon Flip */
+[dir="rtl"] .btn svg:first-child,
+[dir="rtl"] .btn i:first-child {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+[dir="rtl"] .btn svg:last-child,
+[dir="rtl"] .btn i:last-child {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+/* Footer Flip */
+[dir="rtl"] .footer-contact-item svg {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+[dir="rtl"] .social-icon {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+/* Global Toggles Positioning */
+[dir="rtl"] .toggles {
+    right: auto !important;
+    left: 20px !important;
+}
+
+[dir="rtl"] .login-card .toggles {
+    right: auto !important;
+    left: 15px !important;
+}
+
+/* Scroll Top Button */
+[dir="rtl"] #scroll-top {
+    right: auto;
+    left: 30px;
+}
+
+/* Mobile Nav Drawer Flip */
+@media (max-width: 992px) {
+    [dir="rtl"] .nav-links {
+        right: auto !important;
+        left: -100% !important;
+        text-align: right;
+    }
+    
+    [dir="rtl"] .nav-links.active {
+        left: 0 !important;
+    }
+    
+    [dir="rtl"] .nav-links li {
+        width: 100%;
+        margin-right: 0;
+    }
+}

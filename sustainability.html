@@ -6,8 +6,66 @@
     <title>Sustainability | Sylvan Retreat</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/images/logo-icon.png">
-
-
+    <style>
+        @media (max-width: 992px) {
+            .story-card .flex, .eco-item.flex {
+                flex-direction: column-reverse !important;
+                gap: 0 !important;
+                align-items: stretch !important;
+            }
+            .story-card {
+                background: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+            .story-card .flex > div, .eco-item.flex > div, .eco-content, .eco-img {
+                flex: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .eco-img {
+                height: 300px !important;
+                min-height: unset !important;
+                border-radius: 0 !important;
+                margin-bottom: 30px !important;
+                width: 100vw !important;
+                max-width: none !important;
+                margin-left: 50% !important;
+                transform: translateX(-50%) !important;
+                background-size: cover;
+                background-position: center;
+            }
+            [dir="rtl"] .eco-img {
+                margin-left: 0 !important;
+                margin-right: 50% !important;
+                transform: translateX(50%) !important;
+            }
+            .eco-content, .story-card .flex > div:first-child {
+                text-align: center;
+                padding: 20px 20px 60px !important;
+            }
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+                padding: 0 20px;
+            }
+            .brand-story .flex {
+                flex-direction: column-reverse !important;
+            }
+            .serif {
+                padding: 0 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .stat-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .eco-img {
+                height: 250px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 

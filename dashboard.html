@@ -229,8 +229,11 @@
             }
             .sidebar.active { transform: translateX(0); }
             .main-content { margin-left: 0; width: 100%; padding: 20px; padding-top: 80px; box-sizing: border-box; }
-            .dash-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .dash-header .flex { width: 100%; justify-content: space-between; }
+            .dash-header { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 20px; 
+            }
             .stats-grid { grid-template-columns: 1fr; gap: 15px; }
             .stat-card { padding: 20px; }
             .stat-value { font-size: 28px; }
@@ -250,6 +253,16 @@
                 justify-content: space-between;
                 align-items: center;
                 backdrop-filter: blur(10px);
+            }
+
+            /* Center Settings for iPad/Tablet */
+            #tab-settings {
+                text-align: center;
+            }
+            .settings-form {
+                margin: 0 auto;
+                max-width: 650px;
+                text-align: left;
             }
         }
 
@@ -273,6 +286,19 @@
             .visual-chart { height: 150px; }
         }
 
+        @media (max-width: 768px) {
+            .section-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 15px !important;
+            }
+            .section-header .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
         /* RTL Dashboard Support */
         [dir="rtl"] .sidebar {
             left: auto;
@@ -280,15 +306,36 @@
             border-right: none;
             border-left: 1px solid var(--glass-border);
         }
-
         [dir="rtl"] .main-content {
             margin-left: 0;
             margin-right: var(--sidebar-width);
         }
-
-        @media (max-width: 768px) {
+        [dir="rtl"] .sidebar-logo {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+        [dir="rtl"] .nav-item.active {
+            border-left: none;
+            border-right: 3px solid var(--accent);
+        }
+        [dir="rtl"] th {
+            text-align: right;
+        }
+        @media (max-width: 992px) {
+            [dir="rtl"] .sidebar {
+                transform: translateX(100%);
+                left: auto;
+                right: 0;
+            }
+            [dir="rtl"] .sidebar.active {
+                transform: translateX(0);
+            }
             [dir="rtl"] .main-content {
-                margin-right: 80px;
+                margin-right: 0;
+            }
+            [dir="rtl"] .mobile-dash-nav {
+                left: auto;
+                right: 0;
             }
         }
 
@@ -395,12 +442,19 @@
 
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <div class="mobile-dash-nav">
-        <div class="flex align-center">
+    <div class="mobile-dash-nav" style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="index.html" class="flex align-center" style="text-decoration: none; color: inherit;">
             <img src="assets/images/logo-icon.png" alt="Sylvan" style="width: 24px; margin-right: 10px;">
             <span class="serif" style="font-size: 18px; letter-spacing: 1px;">SYLVAN</span>
+        </a>
+        <div class="flex align-center" style="gap: 15px;">
+            <!-- Mobile Toggles -->
+            <div class="toggles flex" style="gap: 10px;">
+                <div class="toggle-btn theme-toggle" title="Toggle Theme" style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border); font-size: 16px;">🌙</div>
+                <div class="toggle-btn rtl-toggle" title="Toggle RTL" style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border); font-size: 12px; color: var(--accent); font-weight: 600;">RTL</div>
+            </div>
+            <button class="toggle-btn" onclick="toggleSidebar()" style="background: var(--glass); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--glass-border); cursor: pointer; color: inherit;">☰</button>
         </div>
-        <button class="toggle-btn" onclick="toggleSidebar()" style="background: var(--glass); padding: 8px 12px; border-radius: 4px;">☰</button>
     </div>
 
     <!-- Sidebar -->
@@ -451,10 +505,6 @@
                 <p style="color: var(--text-muted);">Here's what's happening at the retreat today.</p>
             </div>
             <div class="flex align-center" style="gap: 20px;">
-                <div class="toggles">
-                    <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
-                    <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
-                </div>
                 <div class="user-profile">
                     <div class="user-avatar">A</div>
                     <span style="font-size: 14px; font-weight: 500;">Alex Riverside</span>
@@ -548,7 +598,7 @@
 
         <!-- SECTION: BOOKINGS -->
         <div id="tab-bookings" class="dashboard-section">
-            <div class="flex justify-between align-center" style="margin-bottom: 30px;">
+            <div class="flex justify-between align-center section-header" style="margin-bottom: 30px; flex-wrap: wrap; gap: 20px;">
                 <h2 class="serif">Master Booking Log</h2>
                 <button class="btn btn-primary" style="padding: 10px 20px; font-size: 12px;">+ New Booking</button>
             </div>

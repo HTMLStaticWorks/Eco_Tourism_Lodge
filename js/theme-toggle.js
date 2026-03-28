@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
-    const themeToggle = document.getElementById('theme-toggle');
-    const rtlToggle = document.getElementById('rtl-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle, #theme-toggle');
+    const rtlToggles = document.querySelectorAll('.rtl-toggle, #rtl-toggle');
 
     // Load persisted settings
     const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -10,23 +10,37 @@ document.addEventListener('DOMContentLoaded', () => {
     html.setAttribute('data-theme', currentTheme);
     html.setAttribute('dir', currentDir);
 
-    if (themeToggle) {
-        themeToggle.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
-        themeToggle.addEventListener('click', () => {
+    const updateThemeUI = (theme) => {
+        themeToggles.forEach(btn => {
+            btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        });
+    };
+
+    const updateDirUI = (dir) => {
+        rtlToggles.forEach(btn => {
+            btn.innerHTML = dir === 'ltr' ? 'RTL' : 'LTR';
+        });
+    };
+
+    // Initial UI Sync
+    updateThemeUI(currentTheme);
+    updateDirUI(currentDir);
+
+    themeToggles.forEach(btn => {
+        btn.addEventListener('click', () => {
             const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeToggle.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+            updateThemeUI(newTheme);
         });
-    }
+    });
 
-    if (rtlToggle) {
-        rtlToggle.innerHTML = currentDir === 'ltr' ? 'RTL' : 'LTR';
-        rtlToggle.addEventListener('click', () => {
+    rtlToggles.forEach(btn => {
+        btn.addEventListener('click', () => {
             const newDir = html.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr';
             html.setAttribute('dir', newDir);
             localStorage.setItem('dir', newDir);
-            rtlToggle.innerHTML = newDir === 'ltr' ? 'RTL' : 'LTR';
+            updateDirUI(newDir);
         });
-    }
+    });
 });

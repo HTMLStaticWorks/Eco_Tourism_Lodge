@@ -193,8 +193,8 @@
                 <h4 class="text-accent uppercase">The Wild Live</h4>
                 <h2 class="serif" style="font-size: 42px;">Recent Sightings</h2>
             </div>
-            <div class="flex justify-between" style="gap: 20px; flex-wrap: wrap;">
-                <div class="glass" style="flex: 1; min-width: 250px; padding: 25px; border-radius: var(--radius);">
+            <div class="flex justify-center" style="gap: 20px; flex-wrap: wrap;">
+                <div class="glass sighting-card" style="padding: 25px; border-radius: var(--radius);">
                     <div class="flex justify-between align-center" style="margin-bottom: 15px;">
                         <span style="font-size: 10px; opacity: 0.5;">MAR 26, 2026</span>
                         <span class="text-accent" style="font-size: 10px; font-weight: 600;">HIGH PRIORITY</span>
@@ -202,7 +202,7 @@
                     <h4 class="serif" style="font-size: 20px;">Jaguar Family</h4>
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">Spotted near the Emerald Waterfall during the morning trek.</p>
                 </div>
-                <div class="glass" style="flex: 1; min-width: 250px; padding: 25px; border-radius: var(--radius);">
+                <div class="glass sighting-card" style="padding: 25px; border-radius: var(--radius);">
                     <div class="flex justify-between align-center" style="margin-bottom: 15px;">
                         <span style="font-size: 10px; opacity: 0.5;">MAR 25, 2026</span>
                         <span class="text-accent" style="font-size: 10px; font-weight: 600;">RARE SIGHTING</span>
@@ -210,7 +210,7 @@
                     <h4 class="serif" style="font-size: 20px;">Harpy Eagle</h4>
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">Perched on the Celestial Canopy Suite's roof at dawn.</p>
                 </div>
-                <div class="glass" style="flex: 1; min-width: 250px; padding: 25px; border-radius: var(--radius);">
+                <div class="glass sighting-card" style="padding: 25px; border-radius: var(--radius);">
                     <div class="flex justify-between align-center" style="margin-bottom: 15px;">
                         <span style="font-size: 10px; opacity: 0.5;">MAR 24, 2026</span>
                         <span class="text-accent" style="font-size: 10px; font-weight: 600;">ACTIVITY</span>
@@ -223,6 +223,14 @@
     </section>
 
     <style>
+        .sighting-card {
+            flex: 1;
+            min-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .sighting-card:hover { border-color: var(--accent) !important; background: rgba(255,255,255,0.08); }
+
         .exp-card-large, .exp-item {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
@@ -302,9 +310,11 @@
             .meta { justify-content: center; }
             .exp-item { margin-bottom: 20px; }
             .grid-3 { grid-template-columns: 1fr 1fr; }
+            .sighting-card { flex: 0 1 calc(50% - 10px); }
         }
         @media (max-width: 600px) {
             .grid-3 { grid-template-columns: 1fr; }
+            .sighting-card { flex: 1 1 100%; }
         }
     </style>
 

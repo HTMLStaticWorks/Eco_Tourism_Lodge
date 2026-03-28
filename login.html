@@ -134,16 +134,17 @@
 </head>
 <body>
 
-    <div class="toggles" style="position: absolute; top: 40px; right: 40px; z-index: 100;">
-        <div id="theme-toggle" class="toggle-btn" title="Toggle Theme">☀️</div>
-        <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL">RTL</div>
-    </div>
 
     <script src="js/theme-toggle.js"></script>
 
 
     <div class="login-wrapper" style="min-height: 100vh; padding: 60px 20px;">
-        <div class="login-card">
+        <div class="login-card" style="position: relative;">
+            <!-- Internal Toggles -->
+            <div class="toggles" style="position: absolute; top: 15px; right: 15px; display: flex; gap: 10px;">
+                <div id="theme-toggle" class="toggle-btn" title="Toggle Theme" style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border); font-size: 16px;">🌙</div>
+                <div id="rtl-toggle" class="toggle-btn" title="Toggle RTL" style="cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border); font-size: 11px; color: var(--accent); font-weight: 600;">RTL</div>
+            </div>
             <a href="index.html" class="logo-link" style="margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; text-decoration: none;">
                 <img src="assets/images/logo-icon.png" alt="Sylvan Icon" style="height: 40px; margin-bottom: 10px;">
                 <span class="serif" style="font-size: 24px; letter-spacing: 4px; color: var(--accent);">SYLVAN</span>
