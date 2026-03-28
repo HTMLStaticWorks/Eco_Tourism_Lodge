@@ -1126,7 +1126,12 @@ footer.section-padding {
         margin-left: auto !important;
     }
 
-    .nav-cta .btn, .nav-dashboard-box {
+    .nav-cta .nav-dashboard-box, 
+    .nav-cta .btn-outline {
+        display: none !important;
+    }
+
+    .nav-cta .btn-primary {
         display: none !important;
     }
 
