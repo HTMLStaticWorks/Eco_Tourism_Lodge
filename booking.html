@@ -129,6 +129,17 @@
             color: var(--text-main) !important;
         }
 
+        /* iPad Pro & Desktop: center-align the nav buttons */
+        @media (min-width: 768px) {
+            #booking-nav-btns {
+                justify-content: center !important;
+                gap: 20px;
+            }
+            #booking-nav-btns #prev-btn[style*="visibility: hidden"] {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 992px) {
             #booking-nav-btns {
                 flex-direction: column !important;
